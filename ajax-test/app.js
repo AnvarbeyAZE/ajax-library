@@ -1,41 +1,55 @@
-//Call-backs  test  !! for creating custom-oriented ajax library!!
+/*Custom AJAX library
+using : jsonplaceholder.typicode.com for testing
+ES5 version
+*/
 
-const posts = [
-  {
-    name : "Anvarbey Muminov",
-  },
-  {
-    name : "NiHao",
-  },
-  {
-    name : "Huy Plin",
-  },
-  {
-    name : "Xuyao Date",
-  },
-  {
-    name : "Xuy Sin lin",
-  }
-];
-function createPost(post,callback){
-  setTimeout(function(){
-   // console.log(post);
-   posts.push(post);
-   callback();
-  },2000);
+const http = new eazyHTTP;
 
-}
-function getPost(){
-  setTimeout(function(){
-    let output = '';
-    posts.forEach(function(obj){
-        output += `<li>${obj.name}</li>`;
-    });
-    document.body.innerHTML = output;
-  },1000)
+const data ={
+  titel : 'Custom Post',
+   body: 'This is a custom Post'
 }
 
 
-createPost({name:'Bey'},getPost);
+/*
+//GET A POST
+http.get('https://jsonplaceholder.typicode.com/posts',function(err,response){
+//Avoidng sync "undifined" problem , using the callbacks , we fetch the data then get it in this function
+  if(err)
+  console.log(err);
+  else
+  console.log(response);
+});
+*/
 
-//UFF
+/*
+// CREATE A POST
+http.post('https://jsonplaceholder.typicode.com/posts',data,function(err,response){
+//Avoidng sync "undifined" problem , using the callbacks , we fetch the data then get it in this function
+  if(err)
+  console.log(err);
+  else
+  console.log(response);
+});
+*/
+
+
+//UPDATE A POST
+http.put('https://jsonplaceholder.typicode.com/posts/1',data,function(err,response){
+//Avoidng sync "undifined" problem , using the callbacks , we fetch the data then get it in this function
+  if(err)
+  console.log(err);
+  else
+  console.log(response);
+});
+
+
+//DELETE A POST
+http.delete('https://jsonplaceholder.typicode.com/posts/1',function(err,response){
+//Avoidng sync "undifined" problem , using the callbacks , we fetch the data then get it in this function
+  if(err)
+  console.log(err);
+  else
+  console.log(response);
+});
+
